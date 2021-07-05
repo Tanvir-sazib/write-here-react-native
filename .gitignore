@@ -1,6 +1,6 @@
 node_modules/
 .expo/
-./app/components/database/firebase.config.js
+./app/database/firebase.config.js
 npm-debug.*
 *.jks
 *.p8
