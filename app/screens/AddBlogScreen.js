@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 import * as yup from "yup";
 import AppForm from "../components/forms/AppForm";
 import AppFormField from "../components/forms/AppFormField";
@@ -44,33 +44,35 @@ const AddBlogScreen = ({ navigation }) => {
     }
   };
   return (
-    <Screen style={styles.container}>
-      <AppText style={defaultStyles.headingText}>Add a post</AppText>
-      <AppForm
-        initialValues={{
-          title: title,
-          description: content,
-        }}
-        onSubmit={(values) => console.log(values)}
-        validationSchema={validationSchema}
-      >
-        <AppFormField
-          maxLength={255}
-          name="title"
-          placeholder="Title"
-          onChangeText={(text) => setTitle(text)}
-        />
-        <AppFormField
-          multiline
-          name="description"
-          numberOfLines={3}
-          placeholder="Description"
-          onChangeText={(text) => setContent(text)}
-        />
-        {/* <ImageInput setImageUrl={setImageUrl} /> */}
-        <SubmitButton title="Post Blog" handleSubmit={handleSubmit} />
-      </AppForm>
-    </Screen>
+    <ScrollView>
+      <Screen style={styles.container}>
+        <AppText style={defaultStyles.headingText}>Add a post</AppText>
+        <AppForm
+          initialValues={{
+            title: title,
+            description: content,
+          }}
+          onSubmit={(values) => console.log(values)}
+          validationSchema={validationSchema}
+        >
+          <AppFormField
+            maxLength={255}
+            name="title"
+            placeholder="Title"
+            onChangeText={(text) => setTitle(text)}
+          />
+          <AppFormField
+            multiline
+            name="description"
+            numberOfLines={3}
+            placeholder="Description"
+            onChangeText={(text) => setContent(text)}
+          />
+          {/* <ImageInput setImageUrl={setImageUrl} /> */}
+          <SubmitButton title="Post Blog" handleSubmit={handleSubmit} />
+        </AppForm>
+      </Screen>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
