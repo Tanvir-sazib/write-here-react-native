@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import * as yup from "yup";
 import AppForm from "../components/forms/AppForm";
 import AppFormField from "../components/forms/AppFormField";
@@ -38,35 +38,37 @@ const AddBlogScreen = ({ route, navigation }) => {
   };
 
   return (
-    <Screen style={styles.container}>
-      <AppText style={defaultStyles.headingText}>Edit your blog</AppText>
-      <AppForm
-        initialValues={{
-          title: "",
-          description: "",
-        }}
-        onSubmit={(values) => console.log(values)}
-        validationSchema={validationSchema}
-      >
-        <AppFormField
-          defaultValue={title}
-          maxLength={255}
-          name="title"
-          placeholder="Title"
-          onChangeText={(text) => setTitle(text)}
-        />
-        <AppFormField
-          multiline
-          name="description"
-          numberOfLines={3}
-          placeholder="Description"
-          defaultValue={content}
-          onChangeText={(text) => setContent(text)}
-        />
-        {/* <ImageInput /> */}
-        <SubmitButton title="Post Blog" handleSubmit={handleEdit} />
-      </AppForm>
-    </Screen>
+    <ScrollView>
+      <Screen style={styles.container}>
+        <AppText style={defaultStyles.headingText}>Edit your blog</AppText>
+        <AppForm
+          initialValues={{
+            title: "",
+            description: "",
+          }}
+          onSubmit={(values) => console.log(values)}
+          validationSchema={validationSchema}
+        >
+          <AppFormField
+            defaultValue={title}
+            maxLength={255}
+            name="title"
+            placeholder="Title"
+            onChangeText={(text) => setTitle(text)}
+          />
+          <AppFormField
+            multiline
+            name="description"
+            numberOfLines={3}
+            placeholder="Description"
+            defaultValue={content}
+            onChangeText={(text) => setContent(text)}
+          />
+          {/* <ImageInput /> */}
+          <SubmitButton title="Post Blog" handleSubmit={handleEdit} />
+        </AppForm>
+      </Screen>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
